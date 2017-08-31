@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">" Lagos Devs"</string>
+    <string name="empty_developers_list">No developers found</string>
+    <string name="dev_username">Username</string>
+    <string name="settings_title">Settings</string>
+    <string name="setting_text">settings</string>
+    <string name="handle_placeholder">\@github.com</string>
+    <string name="no_network">No network connection</string>
+    <string name="no_developer">No developers found</string>
+    <string name="no_repository">No repository found</string>
+    <string name="list_text">List of developers in Lagos, Nigeria</string>
+    <string name="name_dialog"> Image Dialog Fragment</string>
+    <string name="github_url_string">Github Url</string>
+    <string name="list_repositories_string">Repositories (Two highest starred)</string>
+
+    <string name="menu_exit">Exit</string>
+    <string name="menu_share_with">Share</string>
+
+    <string name="share_chooser_text">Share via</string>
+
+    <string name="settings_sort_by_label">sort</string>
+    <string name="settings_sort_by_key" translatable="false">sort</string>
+    <string name="settings_sort_by_default" translatable="false">@string/settings_sort_ascending_value</string>
+
+    <string name="settings_sort_ascending_label">Ascending</string>
+    <string name="settings_sort_ascending_value" translatable="false">ascending</string>
+
+    <string name="settings_sort_descending_label">Descending</string>
+    <string name="settings_sort_descending_value" translatable="false">descending</string>
+</resources>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:targetApi="LOLLIPOP">
+
+    <LinearLayout
+        android:id="@+id/developer_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?selectableItemBackground"
+        android:orientation="horizontal"
+        android:showDividers="end">
+
+        <ImageView
+            android:id="@+id/dev_image"
+            android:layout_width="@dimen/list_item_dimen"
+            android:layout_height="@dimen/list_item_dimen"
+            android:padding="@dimen/image_padding"
+            android:src="@drawable/thumbnail"
+            tools:ignore="contentDescription" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:targetApi="LOLLIPOP">
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="bottom"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textStyle="bold"
+                tools:text="@string/dev_username" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="top"
+                android:text="@string/handle_placeholder"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
