@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Francis on 08/08/2017.
- * A custom developer adaper class
+ * A custom developer adapter class
  * Used to puplate the list view in the main activity
  */
 
@@ -90,7 +90,7 @@ public class DeveloperAdapter extends ArrayAdapter<Developer>{
                     }
                 });
 
-        // declare and set username of eacch developer
+        // declare and set username of each developer
         TextView usernameTextView = (TextView) convertView.findViewById(R.id.username);
         usernameTextView.setText(currentDeveloper.getmDevName());
 

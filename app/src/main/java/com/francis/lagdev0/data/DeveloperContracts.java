@@ -11,7 +11,8 @@ public class DeveloperContracts {
         //Empty constructor
     }
 
-    public static final String JSON_RESPONSE_URL = "https://api.github.com/search/users?q=location:lagos";
+    public static final String JSON_RESPONSE_URL =
+            "https://api.github.com/search/users?q=location:lagos+language:java";
     public static final int DEVELOPERS_LOADER_ID = 1;
     public static final int REPOSITORY_LOADER_ID = 2;
     public static final String LOAD_DEV = "developers";

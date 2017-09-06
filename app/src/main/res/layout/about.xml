@@ -1,0 +1,79 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="com.francis.lagdev0.main.AboutFragment">
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@color/about_dialog_header"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/about_dialog_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_nav_back_24dp"
+            android:background="@color/about_dialog_header"
+            tools:ignore="ContentDescription"/>
+
+        <TextView
+            style="?android:textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="start|center"
+            android:text="@string/fragment_title"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_text"
+            android:textAlignment="center"
+            android:textAppearance="?android:textAppearanceSmall" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            style="?android:textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/about_developer"
+            android:textAlignment="center" />
+
+        <TextView
+            style="?android:textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/about_version"
+            android:textStyle="bold" />
+
+        <TextView
+            style="?android:textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/about_build_date"
+            android:textStyle="bold" />
+    </LinearLayout>
+</FrameLayout>

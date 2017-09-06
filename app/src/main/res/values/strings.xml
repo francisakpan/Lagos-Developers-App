@@ -1,7 +1,8 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">" Lagos Devs"</string>
     <string name="empty_developers_list">No developers found</string>
     <string name="dev_username">Username</string>
+    <string name="about_title">About</string>
     <string name="settings_title">Settings</string>
     <string name="setting_text">settings</string>
     <string name="handle_placeholder">\@github.com</string>
@@ -11,7 +12,18 @@
     <string name="list_text">List of developers in Lagos, Nigeria</string>
     <string name="name_dialog"> Image Dialog Fragment</string>
     <string name="github_url_string">Github Url</string>
-    <string name="list_repositories_string">Repositories (Two highest starred)</string>
+    <string name="about_text">
+        The Lagos Devs application list developers in Lagos who uses java programming
+        language as their main development language. The data are queried from the public
+        github Api using the url\n <b>https://api.github.com/search/users?q=location:lagos+language:java</b>
+    </string>
+    <string name="about_developer">Developed by Francis Benson</string>
+    <string name="about_version">Version: 1.0.2</string>
+    <string name="about_build_date">Build date: 2017/09/05</string>
+
+    <string name="num_of_repositories">
+        Repositories found (<xliff:g example="10" id="number">%d</xliff:g>)\nDisplaying two highest starred
+    </string>
 
     <string name="menu_exit">Exit</string>
     <string name="menu_share_with">Share</string>
@@ -27,4 +39,6 @@
 
     <string name="settings_sort_descending_label">Descending</string>
     <string name="settings_sort_descending_value" translatable="false">descending</string>
+
+    <string name="fragment_title">About Lagos Devs</string>
 </resources>

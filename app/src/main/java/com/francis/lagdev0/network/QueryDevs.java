@@ -8,6 +8,7 @@ import com.francis.lagdev0.R;
 import com.francis.lagdev0.data.CompareDev;
 import com.francis.lagdev0.data.Developer;
 import com.francis.lagdev0.data.DeveloperContracts;
+import com.francis.lagdev0.data.RepoLength;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -179,6 +180,7 @@ public class QueryDevs {
         try {
             // build up a list of repository objects with the corresponding data.
             JSONArray root = new JSONArray(jsonFile);
+            RepoLength.setRepoLength(root.length());
 
             for (int j = 0; j < root.length(); j++) {
 

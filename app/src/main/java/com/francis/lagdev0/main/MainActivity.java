@@ -1,7 +1,10 @@
 package com.francis.lagdev0.main;
 
+import android.annotation.TargetApi;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -37,10 +40,6 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //set app logo in action bar
-        getSupportActionBar().setLogo(R.drawable.ic_dev);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         //Initialize views
         loadingIndicator = findViewById(R.id.progressBar);
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
             // if no network set loading view to inform
             loadingIndicator.setVisibility(View.GONE);
             mEmpty.setVisibility(View.GONE);
-            mNoNetwork.setImageResource(R.drawable.no_network);
+            mNoNetwork.setImageResource(R.drawable.ic_no_network);
             displaySnackBar();
         }
 
@@ -110,6 +109,11 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
             case R.id.settings:
                 Intent intent = new Intent(this, Settings.class);
                 startActivity(intent);
+                return true;
+            case R.id.about:
+                AboutFragment ab = new AboutFragment();
+                ab.setCancelable(false);
+                ab.show(getSupportFragmentManager(), "About");
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -117,8 +121,11 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     protected void onResume() {
-        if (!CheckNetworkConn.isConnected(this)){  //Check for netwrok connection to
+        if (!CheckNetworkConn.isConnected(this)){  //Check for network connection to
             displaySnackBar();                     // if no network display snackbar
+            mEmpty.setVisibility(View.GONE);
+            mNoNetwork.setVisibility(View.VISIBLE);
+            mNoNetwork.setImageResource(R.drawable.ic_no_network);
         }
         super.onResume();
     }
@@ -163,15 +170,21 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         // set progress bar to not display
         loadingIndicator.setVisibility(View.GONE);
 
-        // set no network image to not display
-        mNoNetwork.setVisibility(View.GONE);
+        // set empty listView textView visibility as GONE
+        mEmpty.setVisibility(View.GONE);
 
-        //set no developer text to display since no developer was return
-        mEmpty.setText(R.string.no_developer);
+        if (CheckNetworkConn.isConnected(this)) {
+            // set no network image to not display
+            mNoNetwork.setVisibility(View.GONE);
 
-        // Check if data is available and populate the adapter
-        if (data != null && !data.isEmpty()) {
-            adapter.addAll(data);
+            //set no developer text to display since no developer was return
+            mEmpty.setVisibility(View.VISIBLE);
+            mEmpty.setText(R.string.no_developer);
+
+            // Check if data is available and populate the adapter
+            if (data != null && !data.isEmpty()) {
+                adapter.addAll(data);
+            }
         }
     }
 
@@ -180,4 +193,5 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         // Clear adapter on loader reset
         adapter.clear();
     }
+
 }

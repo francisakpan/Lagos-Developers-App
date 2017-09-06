@@ -17,7 +17,7 @@ import com.francis.lagdev0.R;
 
 /**
  * Created by Francis on 10/08/2017.
- * A custom DialogFragment
+ * A custom DialogFragment class
  * That displays a preview of a developer picture when clicked on
  */
 

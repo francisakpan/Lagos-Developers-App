@@ -10,6 +10,11 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/about"
+        android:title="@string/about_title"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/exit"
         android:title="@string/menu_exit"
         app:showAsAction="never"/>

@@ -24,6 +24,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.francis.lagdev0.data.Developer;
 import com.francis.lagdev0.data.DeveloperContracts;
 import com.francis.lagdev0.data.DeveloperContracts.DeveloperSchema;
+import com.francis.lagdev0.data.RepoLength;
 import com.francis.lagdev0.network.CheckNetworkConn;
 import com.francis.lagdev0.network.LoadDevelopers;
 import com.francis.lagdev0.R;
@@ -36,15 +37,17 @@ public class ProfileActivity extends AppCompatActivity implements LoaderCallback
     //Declare views and Strings
     RepositoryAdapter reposAdapter;
     ProgressBar reposProgressBar;
-    TextView emptyRepos;
+    TextView emptyRepos, noOfRepo;
     String repos_url, share_text;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        noOfRepo = (TextView) findViewById(R.id.no_of_repo);
 
-        //declare and set up a support toolsbar for profile activity
+        //declare and set up a support toolsBar for profile activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolsBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -163,6 +166,9 @@ public class ProfileActivity extends AppCompatActivity implements LoaderCallback
         emptyRepos.setText(R.string.no_repository);
 
         if (data != null && !data.isEmpty()) {
+            // get the number of repositories a developer has
+            noOfRepo.setText(String.format(getString(R.string.num_of_repositories),
+                    RepoLength.getLength()));
             reposAdapter.addAll(data);
         }
     }
