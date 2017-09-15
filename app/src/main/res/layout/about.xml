@@ -1,11 +1,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context="com.francis.lagdev0.main.AboutFragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.francis.lagdev0.fragments.AboutFragment">
 
     <LinearLayout
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/about_dialog_header"
         android:orientation="horizontal">
@@ -15,33 +15,38 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:src="@drawable/ic_nav_back_24dp"
             android:background="@color/about_dialog_header"
-            tools:ignore="ContentDescription"/>
+            android:src="@drawable/ic_nav_back_24dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             style="?android:textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start|center"
+            android:paddingEnd="12dp"
+            android:paddingLeft="12dp"
+            android:paddingStart="12dp"
             android:text="@string/fragment_title"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="16dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="12dp"
             android:text="@string/about_text"
             android:textAlignment="center"
-            android:textAppearance="?android:textAppearanceSmall" />
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/about_text_color" />
 
 
         <ImageView
@@ -57,7 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/about_developer"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/about_text_color" />
 
         <TextView
             style="?android:textAppearanceMedium"
@@ -66,6 +72,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:text="@string/about_version"
+            android:textColor="@color/about_text_color"
             android:textStyle="bold" />
 
         <TextView
@@ -74,6 +81,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/about_build_date"
+            android:textColor="@color/about_text_color"
             android:textStyle="bold" />
     </LinearLayout>
 </FrameLayout>

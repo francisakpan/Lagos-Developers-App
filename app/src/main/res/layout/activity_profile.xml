@@ -36,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:minHeight="?attr/actionBarSize"
+                app:popupTheme="@style/menu_option"
                 android:title="@null"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|enterAlways" />

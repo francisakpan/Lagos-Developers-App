@@ -6,5 +6,5 @@
     <color name="divider">#d6d6d6</color>
     <color name="about_dialog_header">#569c7b</color>
     <color name="profile_dialog_header">#644d4d4d</color>
-
+    <color name="about_text_color">#767676</color>
 </resources>

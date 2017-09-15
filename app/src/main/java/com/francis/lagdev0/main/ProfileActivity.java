@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.francis.lagdev0.adapters.RepositoryAdapter;
 import com.francis.lagdev0.data.Developer;
 import com.francis.lagdev0.data.DeveloperContracts;
 import com.francis.lagdev0.data.DeveloperContracts.DeveloperSchema;
@@ -35,10 +37,10 @@ import java.util.List;
 public class ProfileActivity extends AppCompatActivity implements LoaderCallbacks<List<Developer>>{
 
     //Declare views and Strings
-    RepositoryAdapter reposAdapter;
+    String repos_url, share_text;
     ProgressBar reposProgressBar;
     TextView emptyRepos, noOfRepo;
-    String repos_url, share_text;
+    RepositoryAdapter reposAdapter;
 
 
     @Override

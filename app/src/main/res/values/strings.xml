@@ -13,16 +13,17 @@
     <string name="name_dialog"> Image Dialog Fragment</string>
     <string name="github_url_string">Github Url</string>
     <string name="about_text">
-        The Lagos Devs application list developers in Lagos who uses java programming
-        language as their main development language. The data are queried from the public
-        github Api using the url\n <b>https://api.github.com/search/users?q=location:lagos+language:java</b>
+        This application retrieves a list of java developers in Lagos
+        queried from the Github Api endpoint url\n\n
+        <b>https://api.github.com/search/users?q=location:lagos+language:java</b>
     </string>
     <string name="about_developer">Developed by Francis Benson</string>
     <string name="about_version">Version: 1.0.2</string>
-    <string name="about_build_date">Build date: 2017/09/05</string>
+    <string name="about_build_date">Build date: 2017/09/14</string>
 
     <string name="num_of_repositories">
-        Repositories found (<xliff:g example="10" id="number">%d</xliff:g>)\nDisplaying two highest starred
+        Repositories found (<xliff:g example="10" id="number">%d</xliff:g>)
+        \nDisplaying two highest starred
     </string>
 
     <string name="menu_exit">Exit</string>
@@ -32,7 +33,8 @@
 
     <string name="settings_sort_by_label">sort</string>
     <string name="settings_sort_by_key" translatable="false">sort</string>
-    <string name="settings_sort_by_default" translatable="false">@string/settings_sort_ascending_value</string>
+    <string name="settings_sort_by_default" translatable="false">
+        @string/settings_sort_ascending_value</string>
 
     <string name="settings_sort_ascending_label">Ascending</string>
     <string name="settings_sort_ascending_value" translatable="false">ascending</string>

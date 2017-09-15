@@ -1,16 +1,16 @@
 package com.francis.lagdev0.main;
 
-import android.annotation.TargetApi;
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,9 +19,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.francis.lagdev0.adapters.DeveloperAdapter;
 import com.francis.lagdev0.data.Developer;
 import com.francis.lagdev0.data.DeveloperContracts;
 import com.francis.lagdev0.data.DeveloperContracts.DeveloperSchema;
+import com.francis.lagdev0.fragments.AboutFragment;
 import com.francis.lagdev0.network.CheckNetworkConn;
 import com.francis.lagdev0.network.LoadDevelopers;
 import com.francis.lagdev0.R;
@@ -31,15 +33,34 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<Developer>>{
 
-    ImageView mNoNetwork;
     TextView mEmpty;
-    DeveloperAdapter adapter;
+    Snackbar snackbar;
+    ImageView mNoNetwork;
     View loadingIndicator;
+    DeveloperAdapter adapter;
+    SwipeRefreshLayout refresh_me;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Initialize snack bar and set action.
+        snackbar = Snackbar.make(findViewById(R.id.activity_main),
+                getString(R.string.no_network), Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(R.string.setting_text, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.provider.Settings.ACTION_SETTINGS);
+                startActivity(intent);
+            }
+        });
+        snackbar.setActionTextColor(ContextCompat.getColor(this, android.R.color.holo_blue_dark));
+
+        //Initialize swipe refresh layout and set listener
+        refresh_me = (SwipeRefreshLayout) findViewById(R.id.refresh);
+        refresh_me.setColorSchemeResources(R.color.colorPrimaryDark, R.color.colorPrimary);
+        refresh_me.setOnRefreshListener(listener);
 
         //Initialize views
         loadingIndicator = findViewById(R.id.progressBar);
@@ -78,11 +99,30 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
             // if no network set loading view to inform
             loadingIndicator.setVisibility(View.GONE);
             mEmpty.setVisibility(View.GONE);
-            mNoNetwork.setImageResource(R.drawable.ic_no_network);
-            displaySnackBar();
+            mNoNetwork.setImageResource(R.drawable.no_network);
+            snackbar.show();
         }
 
     }
+
+    SwipeRefreshLayout.OnRefreshListener listener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            //refresh the loader
+            if (CheckNetworkConn.isConnected(MainActivity.this)) {
+                refresh_me.setRefreshing(true);
+                getSupportLoaderManager().initLoader(DeveloperContracts.DEVELOPERS_LOADER_ID, null,
+                        MainActivity.this);
+                snackbar.dismiss();
+                return;
+            }
+
+            refresh_me.setRefreshing(false);
+            if (!snackbar.isShown()) {
+                snackbar.show();
+            }
+        }
+    };
 
     /**
      *  set menu in action bar
@@ -122,29 +162,12 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     @Override
     protected void onResume() {
         if (!CheckNetworkConn.isConnected(this)){  //Check for network connection to
-            displaySnackBar();                     // if no network display snackbar
+            snackbar.show();                     // if no network display snackBar
             mEmpty.setVisibility(View.GONE);
             mNoNetwork.setVisibility(View.VISIBLE);
-            mNoNetwork.setImageResource(R.drawable.ic_no_network);
+            mNoNetwork.setImageResource(R.drawable.no_network);
         }
         super.onResume();
-    }
-
-    /**
-     * function to display snackbar in app screen
-     * Used during no network connection
-     */
-    private void displaySnackBar(){
-        Snackbar snackbar = Snackbar.make(findViewById(R.id.activity_main),
-                getString(R.string.no_network), Snackbar.LENGTH_INDEFINITE);
-        snackbar.setAction(R.string.setting_text, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(android.provider.Settings.ACTION_WIFI_SETTINGS);
-                startActivity(intent);
-            }
-        });
-        snackbar.show();
     }
 
     @Override
@@ -169,6 +192,9 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
         // set progress bar to not display
         loadingIndicator.setVisibility(View.GONE);
+
+        // stop refreshing.
+        refresh_me.setRefreshing( false );
 
         // set empty listView textView visibility as GONE
         mEmpty.setVisibility(View.GONE);
